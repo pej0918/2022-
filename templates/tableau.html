@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+            crossorigin="anonymous"></script>
+
+    <title>산불지키미</title>
+    <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap" rel="stylesheet">
+
+    <style>
+
+        * {
+            font-family: 'Gowun Dodum', sans-serif;
+        }
+
+        .mytitle {
+            height: 300px;
+            width: 100%;
+
+            background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("https://cdn.pixabay.com/photo/2020/10/22/13/59/mountains-5676119_960_720.jpg");
+            /*linear-gradient:배경이미지 어둡게 하기 url앞에 콤마로 구분하여 설정해주면된다*/
+            background-position: center;
+            background-size: cover;
+
+            color: white;
+
+            /*안에 있는 내용물을 가운데로 정렬하는 코드 4줄(안외도된다)*/
+            /*항상 4줄씩 붙어다님*/
+            display: flex;
+            flex-direction: column; /*column이나 row냐 그것만 바뀜*/
+            justify-content: center;
+            align-items: center;
+            /*위 4줄은 안에 있는 내용을 가운데 정렬할 때 사용,즉 padding을 가운데로 정렬*/
+            /*margin을 가운데(그니까 버튼 자체를 가운데로 정렬하고 싶을 때는 margin=auto*/
+        }
+
+        .myposts {
+            max-width: 1200px;
+            width: 95%;
+            margin: 30px auto 30px auto;
+
+            box-shadow: 0px 0px 3px 0px black;
+
+            padding: 30px;
+
+            display: flex;
+            flex-direction: column; /*column이나 row냐 그것만 바뀜*/
+            justify-content: center;
+            align-items: center;
+
+        }
+
+        a {
+            text-decoration: none;
+            outline: none;
+            color: inherit;
+        }
+
+        a:hover {
+            text-decoration: underline;
+            text-underline-position: under;
+            background: mintcream;
+            color: darkgreen;
+            transform: translate(-1%, 1%);
+            transition: all .3s;
+        }
+
+        header {
+            width: 100%;
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        header > h2 {
+            margin-left: 20px;
+            font-size: 20px
+        }
+
+        header > nav {
+            width: 80%;
+            height: 100%;
+
+        }
+
+        header ul {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: space-around;
+            margin-left: 10px;
+
+        }
+
+        header ul > li {
+            font-size: 17px;
+            font-style: normal;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            font-weight: bold;
+
+        }
+
+    </style>
+</head>
+<body>
+<div class="page">
+            <header>
+                <h2 style="font-weight:bold"><a href="/">🌄 산불지킴이 🌄</a></h2>
+                <nav>
+                    <ul>
+                        <li><a href="/forestfire_main.html">산악 날씨 보러가기</a></li>
+                        <li><a href="/forestfire_01.html">산불 발생 피해 예상</a></li>
+                        <li><a href="/forestfire_02.html">산불 위험 지역 보러가기</a></li>
+                        <li><a href="/forestfire_03.html">주변 소방서 보러가기</a></li>
+                        <li><a href="/tableau.html">산불 통계 시각화 보러가기</a></li>
+                    </ul>
+                </nav>
+            </header>
+        </div>
+<div class="mytitle" >
+    <h1>🔥산불 통계 시각화🔥</h1>
+
+</div>
+
+<div class="myposts">
+<div class='tableauPlaceholder' id='viz1664800895548' style='position: relative'>
+    <noscript><a href='#'><img alt='대시보드 1 '
+                               src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;1_&#47;1_16644224837860&#47;1_1&#47;1_rss.png'
+                               style='border: none'/></a></noscript>
+    <object class='tableauViz' style='display:none;'>
+        <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F'/>
+        <param name='embed_code_version' value='3'/>
+        <param name='site_root' value=''/>
+        <param name='name' value='1_16644224837860&#47;1_1'/>
+        <param name='tabs' value='no'/>
+        <param name='toolbar' value='yes'/>
+        <param name='static_image'
+               value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;1_&#47;1_16644224837860&#47;1_1&#47;1.png'/>
+        <param name='animate_transition' value='yes'/>
+        <param name='display_static_image' value='yes'/>
+        <param name='display_spinner' value='yes'/>
+        <param name='display_overlay' value='yes'/>
+        <param name='display_count' value='yes'/>
+        <param name='language' value='ko-KR'/>
+    </object>
+</div>
+<script type='text/javascript'>                    var divElement = document.getElementById('viz1664800895548');
+var vizElement = divElement.getElementsByTagName('object')[0];
+if (divElement.offsetWidth > 800) {
+    vizElement.style.width = '1200px';
+    vizElement.style.height = '5027px';
+} else if (divElement.offsetWidth > 500) {
+    vizElement.style.width = '1200px';
+    vizElement.style.height = '5027px';
+} else {
+    vizElement.style.width = '100%';
+    vizElement.style.height = '4327px';
+}
+var scriptElement = document.createElement('script');
+scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
+vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
+</div>
+
+</body>
+</html>

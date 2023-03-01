@@ -1,0 +1,447 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+          crossorigin="anonymous"></script>
+
+  <title>산불지키미</title>
+  <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap" rel="stylesheet">
+  <style>
+    * {
+      font-family: 'Gowun Dodum', sans-serif;
+    }
+
+    .mytitle {
+      background-color: red;
+      height: 450px;
+      width: 100%;
+
+      background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("http://mtweather.nifos.go.kr/FRONT/img/mv_01.jpg");
+      background-position: center;
+      background-size: cover;
+      /*이렇게 3줄은 background세트*/
+      color: white;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      /*내용에 관한 display, flex는 4줄 세트고 대부분 column과 center만 바뀜*/
+    }
+    .PageTitleArea {
+      font-family: 'Jua', sans-serif;
+      display: flex;
+      flex-direction: column;
+      justify-content: left;
+
+
+    }
+
+    .mytitle > button {
+      width: 200px;
+      height: 50px;
+      background-color: transparent;
+      border-radius: 50px;
+      border: 1px solid white;
+      /*선 굵기 1px 실선 흰색*/
+      margin-top: 10px;
+      color: white;
+    }
+
+    .mytitle > button:hover {
+      border: 2px solid white;
+    }
+
+    .bar {
+        background-color: rebeccapurple;
+        height: 3px;
+    }
+
+
+    a {
+      text-decoration: none;
+      outline: none;
+      color: inherit;
+    }
+
+    a:hover {
+      text-decoration: underline;
+      text-underline-position: under;
+      background: mintcream;
+      color: darkgreen;
+      transform: translate(-1%, 1%);
+      transition: all .3s;
+    }
+
+    header {
+      width: 100%;
+      height: 100px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    header > h2 {
+      margin-left: 20px;
+      font-size: 20px
+    }
+
+    header > nav {
+      width: 80%;
+      height: 100%;
+
+    }
+
+    header ul {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: space-around;
+      margin-left: 10px;
+
+    }
+
+    header ul > li {
+      font-size: 17px;
+      font-style: normal;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      font-weight: bold;
+
+    }
+
+  </style>
+  <script>
+    function q1() {
+      $.ajax({
+        type: "GET",
+        url: "https://apis.data.go.kr/1400377/forestPoint/forestPointListEmdSearch?serviceKey=Jouu2wVxGHsCjM8XHbmovt1R%2FGPejeWAio0j%2FOWpXvwGH3cOSWuHe2LpILzRucZc612WEXrZZmOVSuKJrfCqIA%3D%3D&pageNo=1&numOfRows=10&_type=json&localAreas=42810320&excludeForecast=0",
+        data: {},
+        success: function (response) {
+          console.log(response['response']['body']['items']['item'][0]['maxi'])
+        }
+      })
+    }
+    function reply_click() {
+        let clicked_id = $('#s_que2').val()
+        $.ajax({
+            type: 'POST',
+            url: '/api',
+            data: {san_name_give: clicked_id},
+            success: function (response) {
+                // window.location.reload()
+                localStorage.setItem('산불이름클릭한것', clicked_id);
+                location.href = 'http://127.0.0.1:5000/forestfire_main.html'
+
+        }
+      })
+    };
+  </script>
+
+
+
+
+</head>
+
+
+<head>
+<meta http-equiv="imagetoolbar" content="no">
+<meta name="viewport" content="width=1200">
+<meta name="robots" content="index,follow">
+
+<meta property="og:url" content="https://portal.kfb.or.kr">
+<meta property="og:image" content="https://portal.kfb.or.kr/images/kfb_icon.png">
+
+<link rel="stylesheet" href="https://portal.kfb.or.kr/css/style.css?t=20220322">
+<link rel="stylesheet" href="/css/jquery-ui.css">
+<link rel="stylesheet" href="/css/jquery.bxslider.css?t=20181106">
+<script type="text/javascript" src="/include/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="/include/jquery-ui.js"></script>
+<script type="text/javascript" src="/include/jquery.ui.datepicker-ko.js"></script>
+<script type="text/javascript" src="/include/function.js?t=20220331"></script>
+<script type="text/javascript" src="/include/jquery.bxslider.min.js"></script>
+<script type="text/javascript" src="//wcs.naver.net/wcslog.js"></script>
+
+</head>
+
+
+
+<body>
+<div class="page">
+            <header>
+                <h2 style="font-weight:bold"><a href="/">🌄 산불지킴이 🌄</a></h2>
+                <nav>
+                    <ul>
+                        <li><a href="/forestfire_main.html">산악 날씨 보러가기</a></li>
+                        <li><a href="/forestfire_01.html">산불 발생 피해 예상</a></li>
+                        <li><a href="/forestfire_02.html">산불 위험 지역 보러가기</a></li>
+                        <li><a href="/forestfire_03.html">주변 소방서 보러가기</a></li>
+                        <li><a href="/tableau.html">산불 통계 시각화 보러가기</a></li>
+                    </ul>
+                </nav>
+            </header>
+        </div>
+
+
+<div class="main">
+  <div class="mytitle" >
+  <h1>🌲우리동네 산불지킴이🌲</h1>
+    <p><p>
+    <h5> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h5>
+    <h5>우리동네 산불지킴이는 강원도 지역의 산림을 기반으로 산불에 대한 정보를 제공합니다.</h5>
+    <h5>산림의 실시간 기상정보와 산불지수를 제공하고, 이를 바탕으로 한 산불 발생시 피해면적 예측합니다.</h5>
+      <h5>또한 인근 소방서, 과거 산불통계 등 산불에 대한 다양한 서비스를 제공합니다. </h5></p></p>
+</div>
+    <p>
+        &nbsp&nbsp&nbsp&nbsp&nbsp
+    </p>
+<span style=" font: bold 2.5em/1em Georgia, serif ;">
+    <p style="text-align:left;">&nbsp&nbsp&nbsp강원도 산 검색
+    </p></span>
+
+
+        <p>
+        &nbsp&nbsp&nbsp&nbsp&nbsp
+    </p>
+
+    <div class="bar">
+        &nbsp&nbsp&nbsp&nbsp&nbsp
+    </div>
+
+    <p>
+        &nbsp&nbsp&nbsp&nbsp&nbsp
+    </p>
+
+  <div class="contentArea">
+      <div class="comment_1">
+          <ul><span style=" font: bold 1.5em/1em Jeju Gothic, serif ;">
+    <p style="text-align:left;">&nbsp&nbsp🌱강원도 각 지역의 산의 정보를 빠르고 편리하게 검색하실 수 있습니다.
+              </p></span>
+          </ul>
+      </div>
+				<form name="searchForm" method="GET">
+                <div class="search_ty_2 mt20">
+                	<ul class="info">
+
+                		<li class="search">
+                			<span class="item01" style="color: rebeccapurple;"><label for="s_que1">지역</label></span>
+                			<span>
+                			<select onchange="categoryChange(this)" name="s_que1" id="s_que1" class="wid300">
+                              <option>시군구</option>
+                              <option value="강릉" title="강릉" onClick="강릉onDisplay()">강릉</option>
+                              <option value="삼척" title="삼척">삼척</option>
+                              <option value="동해" title="동해">동해</option>
+                              <option value="고성" title="고성">고성</option>
+                              <option value="양양" title="양양">양양</option>
+                              <option value="인제" title="인제">인제</option>
+                              <option value="철원" title="철원">철원</option>
+                              <option value="화천" title="화천">화천</option>
+                              <option value="춘천" title="춘천">춘천</option>
+                              <option value="홍천" title="홍천">홍천</option>
+                              <option value="횡성" title="횡성">횡성</option>
+                              <option value="영월" title="영월">영월</option>
+                              <option value="평창" title="평창">평창</option>
+                              <option value="양구" title="양구">양구</option>
+                              <option value="정선" title="정선">정선</option>
+                              <option value="태백" title="태백">태백</option>
+                            </select></span>
+                		</li>
+
+                        <li class="search display">
+                			<span class="item01" style="color: rebeccapurple;"><label for="s_que1">이름</label></span>
+                            <span>
+                			<select name="s_que2" id="s_que2" class="wid300">
+                              <option>산이름</option></select></span>
+
+                		</li>
+                        <script>
+                            function categoryChange(e) {
+                                var good_강릉 = ["고루포기산", "곤신봉", "대궁산", "만덕봉", "매봉산", "사기막", "사달산", "전후재", "제왕산", "피래산", "화란봉"];
+                                var good_삼척 = ["검봉산"
+                                    , "깃대봉"
+                                    , "뇌암산"
+                                    , "덕항산"
+                                    , "두리봉"
+                                    , "멍에산"
+                                    , "사금산"
+                                    , "상서기"
+                                    , "소공령"
+                                    , "육백산"
+                                    , "중봉산"
+                                    , "한오봉"
+                                    , "헬기장"
+                                ];
+                                var good_동해 = ["앞재넘어골"];
+                                var good_고성 = ["건봉산"
+                                    , "고황봉"
+                                    , "까치봉"
+                                    , "마산"
+                                    , "성인대"
+                                    , "죽변봉"
+                                ];
+                                var good_양양 = ["감투봉"
+                                    , "만월산"
+                                    , "북암령"
+                                    , "시루봉"
+                                    , "정족산"
+                                ];
+                                var good_인제 = ["가득봉"
+                                    , "가칠봉"
+                                    , "대암산"
+                                    , "명당산"
+                                    , "서리골"
+                                    , "아미산"
+                                    , "원대봉"
+                                    , "응봉산"
+                                    , "한석산"
+                                ];
+                                var good_철원 = ["곰배산"
+                                    , "두목봉"
+                                    , "승리봉"
+                                    , "용봉산"
+                                    , "은하봉"
+                                    , "흑운토령"
+                                    , "흰바우산"
+                                ];
+                                var good_화천 = ["두류산"
+                                    , "성불령 용화산"
+                                    , "수리봉"
+                                    , "오봉산"
+                                    , "일산"
+                                ];
+                                var good_춘천 = ["가리산"
+                                    , "계관산"
+                                    , "금병산"
+                                    , "느랏재"
+                                    , "뒷재봉"
+                                    , "사오랑골"
+                                    , "석파령"
+                                    , "연엽산"
+                                    , "죽엽산"
+                                    , "토보산"
+                                ];
+                                var good_홍천 = ["공골"
+                                    , "까끈봉"
+                                    , "대학산"
+                                    , "매화산"
+                                    , "불발령"
+                                    , "삼봉자연휴양림"
+                                    , "오음산"
+                                    , "응봉산"
+                                ];
+                                var good_횡성 = ["마당재골"
+                                    , "매봉산"
+                                    , "사자산"
+                                    , "어답산"
+                                    , "청태산자연휴양림"
+                                    , "태기산"
+                                ];
+                                var good_영월 = ["곰봉"
+                                    , "도마니골"
+                                    , "두위봉"
+                                    , "망경대산"
+                                    , "배향산"
+                                    , "백운산"
+                                    , "응봉산"
+                                ];
+                                var good_평창 = ["구양사골"
+                                    , "남병산",
+                                    "능경봉",
+                                    "두타산",
+                                    "매봉",
+                                    "백석산",
+                                    "백적산",
+                                    "병두산",
+                                    "선자령",
+                                    "술이봉",
+                                    "중왕산",
+                                    "청태산",
+                                    "황병산"
+                                ];
+                                var good_양구 = ["검무정골",
+                                    "기룡산",
+                                    "대우산",
+                                    "도솔산",
+                                    "백석산",
+                                    "봉화산",
+                                    "사명산",
+                                    "천미골"
+                                ];
+                                var good_정선 = ["고루포기산",
+                                    "곤신봉",
+                                    "대궁산",
+                                    "만덕봉",
+                                    "매봉산",
+                                    "사기막",
+                                    "사달산",
+                                    "전후재",
+                                    "제왕산",
+                                    "피래산",
+                                    "화랑봉"
+                                ];
+                                var good_태백 = ["풀장골"
+                                    , "함백산"
+                                ];
+
+                                var target = document.getElementById("s_que2");
+
+                                if (e.value == "강릉") var d = good_강릉;
+                                else if (e.value == "삼척") var d = good_삼척;
+                                else if (e.value == "동해") var d = good_동해;
+                                else if (e.value == "고성") var d = good_고성;
+                                else if (e.value == "양양") var d = good_양양;
+                                else if (e.value == "인제") var d = good_인제;
+                                else if (e.value == "철원") var d = good_철원;
+                                else if (e.value == "화천") var d = good_화천;
+                                else if (e.value == "춘천") var d = good_춘천;
+                                else if (e.value == "홍천") var d = good_홍천;
+                                else if (e.value == "횡성") var d = good_횡성;
+                                else if (e.value == "영월") var d = good_영월;
+                                else if (e.value == "평창") var d = good_평창;
+                                else if (e.value == "양구") var d = good_양구;
+                                else if (e.value == "정선") var d = good_정선;
+                                else if (e.value == "태백") var d = good_태백;
+
+
+                                target.options.length = 0;
+
+                                for (x in d) {
+                                    var opt = document.createElement("option");
+                                    opt.value = d[x];
+                                    opt.innerHTML = d[x];
+                                    target.appendChild(opt);
+                                }
+                            }
+                        </script>
+
+
+                        <button type="button" class="btn btn-light" onClick="reply_click()" style="background-color: rgba(179,23,255,0.03) ">검색</button>
+
+
+
+                    </ul>
+    			</div>
+				</form>
+
+
+            </div>
+    <h5> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h5>
+    <h5> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h5>
+    <h5> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h5>
+
+
+
+</div>
+
+</body>
+
+</html>
