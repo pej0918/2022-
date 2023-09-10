@@ -6,7 +6,8 @@
     - 웹페이지의 첫 화면으로 산 검색 창 구현
     - 상단 메뉴바를 통해 원하는 서비스를 클릭하면 바로 이동할 수 있도록 구현
     
-    ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/c3469d98-46eb-47e7-9cae-49c12a5ab569/Untitled.png)
+    ![Uploading Untitled (6).png…]()
+
     
 2.  산 정보 전달 화면
     - 산 위치를 보여주는 대시보드 구현
